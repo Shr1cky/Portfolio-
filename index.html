@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <nav>
+    
+        <ul>
+            <li><a href="index.html" class="active">Hjem</a></li>
+            <li><a href="about.html">Om mig</a></li>
+            <li><a href="projects.html">Projekter</a></li>
+            <li><a href="contact.html">Kontakt</a></li>
+            <li><a href="snake.html">Snake</a></li>
+        </ul>
+    </nav>
+    <h1>Min Portfolio</h1>
+    <p>This is a sample HTML document.</p>
+    <canvas id="matrix"></canvas>
+
+    <!-- Opgave 1: Skift tekst ved klik på knap -->
+    <section>
+        <p id="changeTextP">Dette er den oprindelige tekst.</p>
+        <button onclick="changeText()">Skift tekst</button>
+    </section>
+
+    <!-- Opgave 2: Skift baggrundsfarve -->
+    <section>
+        <button onclick="changeBgColor()">Skift baggrundsfarve</button>
+    </section>
+
+    <!-- Opgave 3: Vis/Skjul et element -->
+    <section>
+        <button onclick="toggleParagraph()">Vis/Skjul afsnit</button>
+        <p id="toggleP">Dette afsnit kan vises/skjules.</p>
+    </section>
+
+    <!-- Opgave 4: Simpel tæller -->
+    <section>
+        <button onclick="changeCount(-1)">-</button>
+        <span id="counter">0</span>
+        <button onclick="changeCount(1)">+</button>
+    </section>
+
+    <!-- Opgave 5: Live tegnoptælling -->
+    <section>
+        <input type="text" id="charInput" oninput="countChars()" placeholder="Skriv noget...">
+        <span id="charCount">0</span> tegn
+    </section>
+
+    <!-- Opgave 6: Vis tekst fra inputfelt -->
+    <section>
+        <input type="text" id="showInput" placeholder="Skriv tekst her">
+        <button onclick="showInputText()">Vis tekst</button>
+        <p id="showOutput"></p>
+    </section>
+
+<script>
+  const canvas = document.getElementById("matrix");
+  const ctx = canvas.getContext("2d");
+
+
+  canvas.height = window.innerHeight;
+  canvas.width = window.innerWidth;
+
+  const letters = "アァイィウヴエェオカガキギクグケゲコゴサザシジスズセゼソゾタダチヂッヅテデトドナニヌネノハバパヒビピフブプヘベペホボポマミムメモヤャユュヨョラリルレロワヲンABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".split("");
+
+  const fontSize = 16;
+  const columns = canvas.width / fontSize;
+
+  const drops = [];
+  for (let x = 0; x < columns; x++) drops[x] = 1;
+
+  function draw() {
+  
+    ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = "#0F0"; // neon green
+    ctx.font = fontSize + "px monospace";
+
+    for (let i = 0; i < drops.length; i++) {
+      const text = letters[Math.floor(Math.random() * letters.length)];
+      ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+      if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+      drops[i]++;
+    }
+  }
+
+  setInterval(draw, 33);
+  window.addEventListener("resize", () => {
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+  });
+
+  // Opgave 1
+  function changeText() {
+    document.getElementById("changeTextP").textContent = "Teksten er nu ændret!";
+  }
+
+  // Opgave 2
+  function changeBgColor() {
+    const r = Math.floor(Math.random()*256);
+    const g = Math.floor(Math.random()*256);
+    const b = Math.floor(Math.random()*256);
+    document.body.style.backgroundColor = `rgb(${r},${g},${b})`;
+  }
+
+  // Opgave 3
+  function toggleParagraph() {
+    const p = document.getElementById("toggleP");
+    if (p.style.display === "none") {
+      p.style.display = "block";
+    } else {
+      p.style.display = "none";
+    }
+  }
+
+  // Opgave 4
+  let count = 0;
+  function changeCount(val) {
+    count += val;
+    document.getElementById("counter").textContent = count;
+  }
+
+  // Opgave 5
+  function countChars() {
+    const input = document.getElementById("charInput");
+    document.getElementById("charCount").textContent = input.value.length;
+  }
+
+  // Opgave 6
+  function showInputText() {
+    const val = document.getElementById("showInput").value;
+    document.getElementById("showOutput").textContent = val;
+  }
+</script>
+
+</body>
+</html>

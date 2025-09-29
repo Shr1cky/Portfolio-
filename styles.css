@@ -1,0 +1,54 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #000000;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: #0077cc;
+}
+
+p {
+    font-size: 16px;
+    color: #e0e0e0;
+}
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    background-color: #0077cc;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+}
+
+nav ul li {
+    flex: 1;
+}
+
+nav ul li a {
+    display: block;
+    padding: 14px 20px;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+}
+
+nav ul li a:hover {
+    background-color: #005fa3;
+}
+nav ul li a.active {
+    background-color: #105c92;
+}
+.snake-game {
+    border: 1px solid #0077cc;
+    background-color: #000000;
+    display: block;
+    margin: 20px auto;
+}
+
+a {
+    color: #0077cc;
+    text-decoration: none;
+}
