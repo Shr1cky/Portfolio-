@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    
+    <nav>
+    
+        <ul>
+            <li><a href="index.html" class="active">Hjem</a></li>
+            <li><a href="about.html">Om mig</a></li>
+            <li><a href="projects.html">Projekter</a></li>
+            <li><a href="contact.html">Kontakt</a></li>
+            <li><a href="snake.html">Snake</a></li>
+            <li><a href="jokes.html">Jokes</a></li>
+        </ul>
+    </nav>
+    <h1>Min Portfolio</h1>
+    <p>This is a sample HTML document.</p>
+    <canvas id="matrix"></canvas>
+
+    
+    <section>
+        <p id="changeTextP">Dette er den oprindelige tekst.</p>
+        <button onclick="changeText()">Skift tekst</button>
+    </section>
+
+   
+    <section>
+        <button onclick="changeBgColor()">Skift baggrundsfarve</button>
+    </section>
+
+    <section>
+        <button onclick="toggleParagraph()">Vis/Skjul afsnit</button>
+        <p id="toggleP">Dette afsnit kan vises/skjules.</p>
+    </section>
+
+   
+    <section>
+        <button onclick="changeCount(-1)">-</button>
+        <span id="counter">0</span>
+        <button onclick="changeCount(1)">+</button>
+    </section>
+
+    
+    <section>
+        <input type="text" id="charInput" oninput="countChars()" placeholder="Skriv noget...">
+        <span id="charCount">0</span> tegn
+    </section>
+
+    
+    <section>
+        <input type="text" id="showInput" placeholder="Skriv tekst her">
+        <button onclick="showInputText()">Vis tekst</button>
+        <p id="showOutput"></p>
+    </section>
+
+</body>
+</html>
